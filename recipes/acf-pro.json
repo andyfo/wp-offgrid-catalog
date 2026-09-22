@@ -4,8 +4,9 @@
   "id": "acf-pro",
   "name": "ACF PRO",
   "plugin": "advanced-custom-fields-pro",
+  "version": "1.0",
   "vendorUrl": "https://www.advancedcustomfields.com/",
-  "description": "Defines ACF_PRO_LICENSE for the site and activates it through ACF's own functions. ACF moves the activation itself when the site URL changes (6.2.3+), and the panel triggers that right after every URL change instead of waiting for the next wp-admin visit.",
+  "description": "Activates your ACF PRO license on every new site, re-activates it when the site moves to its own domain, and releases it when the site is deleted.",
   "license": {
     "constant": "ACF_PRO_LICENSE",
     "hint": "Your license key from advancedcustomfields.com → Licenses."
@@ -21,7 +22,11 @@
       {
         "run": "wp",
         "label": "Updating ACF PRO to the current release",
-        "args": ["plugin", "update", "{{plugin}}"],
+        "args": [
+          "plugin",
+          "update",
+          "{{plugin}}"
+        ],
         "optional": true
       }
     ],

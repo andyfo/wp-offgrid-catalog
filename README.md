@@ -39,8 +39,9 @@ could, and nothing more.
   "id": "example-pro",
   "name": "Example Pro",
   "plugin": "example-pro",
+  "version": "1.0",
   "vendorUrl": "https://example.com/",
-  "description": "One sentence on what the recipe does; shown in the panel.",
+  "description": "Activates your Example Pro license on every new site and again when the site moves to its own domain.",
   "license": { "constant": "EXAMPLE_PRO_LICENSE", "hint": "Where to find the key." },
   "hooks": {
     "afterInstall": [
@@ -68,6 +69,8 @@ could, and nothing more.
 |---|---|
 | `id` | The identity a panel files the stored license key under. Never change it once published. |
 | `plugin` | The plugin directory name, as `wp plugin list` shows it. |
+| `version` | For people: bump it when the recipe changes. Panels follow the catalog automatically; the version makes the change legible. |
+| `description` | One plain sentence on what the recipe does for the operator — what gets activated when — not how. |
 | `license` | Present when the plugin takes a key. `constant` makes the panel define that PHP constant on every site running the plugin (for vendors that read a wp-config constant); `hint` says where the key is found. A recipe without `license` can still automate things. |
 | `hooks.afterInstall` | Runs right after a new site's plugins are installed, and on **Activate** in the panel. |
 | `hooks.afterUrlChange` | Runs after the panel pointed WordPress at a new URL (go-live, restore under another hostname, move). |
