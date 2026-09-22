@@ -1,0 +1,63 @@
+{
+  "type": "plugin-recipe",
+  "typeVersion": 1,
+  "id": "breakdance",
+  "name": "Breakdance",
+  "plugin": "breakdance",
+  "vendorUrl": "https://breakdance.com/",
+  "description": "Sets and activates the license through Breakdance's own WP-CLI commands (Breakdance 2.7 or newer). After a URL change it also runs Breakdance's URL replacement - its content stores URLs as JSON, which a plain search-replace does not reach - and clears the CSS cache.",
+  "license": {
+    "hint": "Your license key from breakdance.com → Portal → License Keys."
+  },
+  "hooks": {
+    "afterInstall": [
+      {
+        "run": "wp",
+        "label": "Activating the Breakdance license",
+        "args": ["breakdance", "license", "{{key}}"],
+        "expect": "Status:\\s*Valid[\\s\\S]*Activation:\\s*Active"
+      },
+      {
+        "run": "wp",
+        "label": "Updating Breakdance to the current release",
+        "args": ["plugin", "update", "{{plugin}}"],
+        "optional": true
+      }
+    ],
+    "afterUrlChange": [
+      {
+        "run": "wp",
+        "label": "Replacing URLs inside Breakdance content",
+        "args": ["breakdance", "replace_url", "{{oldUrl}}", "{{newUrl}}"],
+        "optional": true
+      },
+      {
+        "run": "wp",
+        "label": "Clearing the Breakdance CSS cache",
+        "args": ["breakdance", "clear_cache"],
+        "optional": true
+      },
+      {
+        "run": "wp",
+        "label": "Re-activating the Breakdance license for the new URL",
+        "args": ["breakdance", "license", "{{key}}"],
+        "expect": "Status:\\s*Valid[\\s\\S]*Activation:\\s*Active"
+      }
+    ],
+    "beforeRemove": [
+      {
+        "run": "wp",
+        "label": "Clearing the Breakdance license",
+        "args": ["breakdance", "license", "clear"]
+      }
+    ],
+    "verify": [
+      {
+        "run": "wp",
+        "label": "Checking the Breakdance license",
+        "args": ["breakdance", "status"],
+        "expect": "License:\\s*Pro Mode"
+      }
+    ]
+  }
+}

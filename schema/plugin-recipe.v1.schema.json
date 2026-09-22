@@ -1,0 +1,371 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://andyfo.github.io/wp-offgrid-catalog/schema/plugin-recipe.v1.schema.json",
+  "title": "WP Offgrid plugin recipe, version 1",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "const": "plugin-recipe"
+    },
+    "typeVersion": {
+      "type": "number",
+      "const": 1
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]{1,60}$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100
+    },
+    "plugin": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9._-]{0,99}$"
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 500
+    },
+    "vendorUrl": {
+      "type": "string",
+      "format": "uri"
+    },
+    "license": {
+      "type": "object",
+      "properties": {
+        "constant": {
+          "type": "string",
+          "pattern": "^[A-Z][A-Z0-9_]{2,60}$"
+        },
+        "hint": {
+          "type": "string",
+          "maxLength": 300
+        }
+      },
+      "additionalProperties": false
+    },
+    "hooks": {
+      "default": {
+        "afterInstall": [],
+        "afterUrlChange": [],
+        "beforeRemove": [],
+        "verify": []
+      },
+      "type": "object",
+      "properties": {
+        "afterInstall": {
+          "default": [],
+          "maxItems": 20,
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "run": {
+                    "type": "string",
+                    "const": "wp"
+                  },
+                  "args": {
+                    "minItems": 1,
+                    "maxItems": 30,
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "maxLength": 500
+                    }
+                  },
+                  "label": {
+                    "type": "string",
+                    "maxLength": 120
+                  },
+                  "optional": {
+                    "default": false,
+                    "type": "boolean"
+                  },
+                  "expect": {
+                    "type": "string",
+                    "maxLength": 300
+                  }
+                },
+                "required": [
+                  "run",
+                  "args"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "run": {
+                    "type": "string",
+                    "const": "php"
+                  },
+                  "code": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 20000
+                  },
+                  "label": {
+                    "type": "string",
+                    "maxLength": 120
+                  },
+                  "optional": {
+                    "default": false,
+                    "type": "boolean"
+                  },
+                  "expect": {
+                    "type": "string",
+                    "maxLength": 300
+                  }
+                },
+                "required": [
+                  "run",
+                  "code"
+                ],
+                "additionalProperties": false
+              }
+            ]
+          }
+        },
+        "afterUrlChange": {
+          "default": [],
+          "maxItems": 20,
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "run": {
+                    "type": "string",
+                    "const": "wp"
+                  },
+                  "args": {
+                    "minItems": 1,
+                    "maxItems": 30,
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "maxLength": 500
+                    }
+                  },
+                  "label": {
+                    "type": "string",
+                    "maxLength": 120
+                  },
+                  "optional": {
+                    "default": false,
+                    "type": "boolean"
+                  },
+                  "expect": {
+                    "type": "string",
+                    "maxLength": 300
+                  }
+                },
+                "required": [
+                  "run",
+                  "args"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "run": {
+                    "type": "string",
+                    "const": "php"
+                  },
+                  "code": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 20000
+                  },
+                  "label": {
+                    "type": "string",
+                    "maxLength": 120
+                  },
+                  "optional": {
+                    "default": false,
+                    "type": "boolean"
+                  },
+                  "expect": {
+                    "type": "string",
+                    "maxLength": 300
+                  }
+                },
+                "required": [
+                  "run",
+                  "code"
+                ],
+                "additionalProperties": false
+              }
+            ]
+          }
+        },
+        "beforeRemove": {
+          "default": [],
+          "maxItems": 20,
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "run": {
+                    "type": "string",
+                    "const": "wp"
+                  },
+                  "args": {
+                    "minItems": 1,
+                    "maxItems": 30,
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "maxLength": 500
+                    }
+                  },
+                  "label": {
+                    "type": "string",
+                    "maxLength": 120
+                  },
+                  "optional": {
+                    "default": false,
+                    "type": "boolean"
+                  },
+                  "expect": {
+                    "type": "string",
+                    "maxLength": 300
+                  }
+                },
+                "required": [
+                  "run",
+                  "args"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "run": {
+                    "type": "string",
+                    "const": "php"
+                  },
+                  "code": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 20000
+                  },
+                  "label": {
+                    "type": "string",
+                    "maxLength": 120
+                  },
+                  "optional": {
+                    "default": false,
+                    "type": "boolean"
+                  },
+                  "expect": {
+                    "type": "string",
+                    "maxLength": 300
+                  }
+                },
+                "required": [
+                  "run",
+                  "code"
+                ],
+                "additionalProperties": false
+              }
+            ]
+          }
+        },
+        "verify": {
+          "default": [],
+          "maxItems": 20,
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "run": {
+                    "type": "string",
+                    "const": "wp"
+                  },
+                  "args": {
+                    "minItems": 1,
+                    "maxItems": 30,
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "maxLength": 500
+                    }
+                  },
+                  "label": {
+                    "type": "string",
+                    "maxLength": 120
+                  },
+                  "optional": {
+                    "default": false,
+                    "type": "boolean"
+                  },
+                  "expect": {
+                    "type": "string",
+                    "maxLength": 300
+                  }
+                },
+                "required": [
+                  "run",
+                  "args"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "run": {
+                    "type": "string",
+                    "const": "php"
+                  },
+                  "code": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 20000
+                  },
+                  "label": {
+                    "type": "string",
+                    "maxLength": 120
+                  },
+                  "optional": {
+                    "default": false,
+                    "type": "boolean"
+                  },
+                  "expect": {
+                    "type": "string",
+                    "maxLength": 300
+                  }
+                },
+                "required": [
+                  "run",
+                  "code"
+                ],
+                "additionalProperties": false
+              }
+            ]
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "type",
+    "typeVersion",
+    "id",
+    "name",
+    "plugin"
+  ],
+  "additionalProperties": false
+}

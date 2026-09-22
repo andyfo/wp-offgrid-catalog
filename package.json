@@ -1,0 +1,17 @@
+{
+  "name": "wp-offgrid-catalog",
+  "private": true,
+  "description": "Shared content for WP Offgrid panels, published as a signed static catalog",
+  "type": "module",
+  "scripts": {
+    "check": "node scripts/build.mjs --check",
+    "build": "node scripts/build.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "devDependencies": {
+    "ajv": "8.20.0",
+    "ajv-formats": "3.0.1"
+  }
+}
