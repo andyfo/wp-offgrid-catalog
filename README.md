@@ -1,17 +1,17 @@
-# WP Offgrid catalog
+# WPL7 catalog
 
-Shared content for WP Offgrid panels — the self-hosted WordPress hosting panel that is being
-open-sourced under that name. Today the catalog holds **plugin recipes**: how a panel supplies
-and activates a plugin's license, what it redoes when a site's URL changes, and how it
-releases the activation. More kinds of entries will follow.
+Shared content for [WPL7](https://github.com/andyfo/wpl7) panels, the self-hosted WordPress
+hosting panel. Today the catalog holds **plugin recipes**: how a panel supplies and activates
+a plugin's license, what it redoes when a site's URL changes, and how it releases the
+activation. More kinds of entries will follow.
 
 Every panel fetches this catalog **hourly** and verifies its signature, so a corrected or new
 recipe reaches every install without a software update. Entries a panel does not understand
 yet are skipped and counted, which is the only case that calls for updating the panel.
 
-- Published index: **https://andyfo.github.io/wp-offgrid-catalog/v1/index.json**
-- Signature: https://andyfo.github.io/wp-offgrid-catalog/v1/index.json.sig
-- Schema: https://andyfo.github.io/wp-offgrid-catalog/schema/plugin-recipe.v1.schema.json
+- Published index: **https://andyfo.github.io/wpl7-catalog/v1/index.json**
+- Signature: https://andyfo.github.io/wpl7-catalog/v1/index.json.sig
+- Schema: https://andyfo.github.io/wpl7-catalog/schema/plugin-recipe.v1.schema.json
 
 ## Adding a recipe
 
@@ -83,8 +83,8 @@ Steps, in order, each either:
   `{{key}}`, `{{plugin}}`, `{{url}}` and — in `afterUrlChange` — `{{oldUrl}}` / `{{newUrl}}`
   substituted.
 - `{ "run": "php", "code": "..." }` — PHP without an opening tag, run through `wp eval`. It
-  receives the same values as environment variables (`WPOG_LICENSE_KEY`, `WPOG_SITE_URL`,
-  `WPOG_OLD_URL`, `WPOG_NEW_URL`), so a key is never spliced into code. Exit non-zero to fail.
+  receives the same values as environment variables (`WPL7_LICENSE_KEY`, `WPL7_SITE_URL`,
+  `WPL7_OLD_URL`, `WPL7_NEW_URL`), so a key is never spliced into code. Exit non-zero to fail.
 
 Both take `label` (shown in the job log), `expect` (a JavaScript regular expression, multiline,
 that stdout must match — use it whenever a vendor's command exits 0 whatever it concludes) and

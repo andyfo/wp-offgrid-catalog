@@ -10,8 +10,8 @@ import addFormats from 'ajv-formats';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const check = process.argv.includes('--check');
-const SOURCE = 'https://github.com/andyfo/wp-offgrid-catalog';
-const BASE_URL = 'https://andyfo.github.io/wp-offgrid-catalog';
+const SOURCE = 'https://github.com/andyfo/wpl7-catalog';
+const BASE_URL = 'https://andyfo.github.io/wpl7-catalog';
 const SCHEMA_FILE = 'plugin-recipe.v1.schema.json';
 
 const schema = JSON.parse(fs.readFileSync(path.join(root, 'schema', SCHEMA_FILE), 'utf8'));
@@ -68,7 +68,7 @@ if (check) process.exit(0);
 
 // --- build ------------------------------------------------------------------
 const index = {
-  format: 'wp-offgrid-catalog',
+  format: 'wpl7-catalog',
   formatVersion: 1,
   generatedAt: new Date().toISOString(),
   source: SOURCE,
@@ -112,10 +112,10 @@ fs.writeFileSync(
   path.join(dist, 'index.html'),
   `<!doctype html>
 <meta charset="utf-8">
-<title>WP Offgrid catalog</title>
+<title>WPL7 catalog</title>
 <style>body{font:15px/1.5 system-ui,sans-serif;max-width:48rem;margin:3rem auto;padding:0 1rem;color:#222}code{background:#f3f3f3;padding:0 .3em;border-radius:3px}</style>
-<h1>WP Offgrid catalog</h1>
-<p>Shared content for <a href="${SOURCE}">WP Offgrid</a> panels. Panels fetch <a href="v1/index.json">v1/index.json</a>
+<h1>WPL7 catalog</h1>
+<p>Shared content for <a href="https://github.com/andyfo/wpl7">WPL7</a> panels. Panels fetch <a href="v1/index.json">v1/index.json</a>
 and check it against <a href="v1/index.json.sig">its signature</a>; the format is in <a href="schema/${SCHEMA_FILE}">the schema</a>.
 Generated ${esc(index.generatedAt)}${index.commit ? ` from <code>${esc(index.commit.slice(0, 7))}</code>` : ''}.</p>
 <h2>Plugin recipes (${entries.length})</h2>

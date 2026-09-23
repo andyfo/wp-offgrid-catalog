@@ -14,5 +14,5 @@ Keep steps declarative: wp-cli arguments or a short PHP snippet that calls the p
 activation function. If a plugin only offers a button in wp-admin, look for the function
 behind it — it almost always exists — rather than scripting a browser.
 
-The recipe format is defined in the WP Offgrid panel and exported here as JSON Schema
+The recipe format is defined in the WPL7 panel and exported here as JSON Schema
 (`schema/`). A change to the format lands there first and is regenerated here.

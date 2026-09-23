@@ -1,7 +1,7 @@
 {
-  "name": "wp-offgrid-catalog",
+  "name": "wpl7-catalog",
   "private": true,
-  "description": "Shared content for WP Offgrid panels, published as a signed static catalog",
+  "description": "Shared content for WPL7 panels, published as a signed static catalog",
   "type": "module",
   "scripts": {
     "check": "node scripts/build.mjs --check",

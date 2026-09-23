@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://andyfo.github.io/wp-offgrid-catalog/schema/plugin-recipe.v1.schema.json",
-  "title": "WP Offgrid plugin recipe, version 1",
+  "$id": "https://andyfo.github.io/wpl7-catalog/schema/plugin-recipe.v1.schema.json",
+  "title": "WPL7 plugin recipe, version 1",
   "type": "object",
   "properties": {
     "type": {
